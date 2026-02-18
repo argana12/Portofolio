@@ -1,12 +1,34 @@
 body{
   margin:0;
   font-family: 'Segoe UI', sans-serif;
-  background:linear-gradient(to right,#f8fafc,#eef2f7);
+  background:#f8fafc;
   color:#0f172a;
+  overflow-x:hidden;
 }
 
+/* BACKGROUND ANIMATION */
+
+.bg-animate{
+  position:fixed;
+  width:200%;
+  height:200%;
+  background:linear-gradient(120deg,
+  transparent 40%,
+  rgba(34,197,94,0.15),
+  transparent 60%);
+  animation:moveBg 12s linear infinite;
+  z-index:-1;
+}
+
+@keyframes moveBg{
+  0%{transform:translateX(-50%) translateY(-50%)}
+  100%{transform:translateX(0%) translateY(0%)}
+}
+
+/* LAYOUT */
+
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
   padding:40px 20px;
 }
@@ -15,30 +37,34 @@ body{
   text-align:center;
 }
 
+/* FOTO FULL BODY */
+
 .profile{
-  width:140px;
-  height:140px;
-  object-fit:cover;
-  border-radius:50%;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  margin-bottom:15px;
+  width:280px;
+  max-width:90%;
+  margin-bottom:20px;
+  filter:drop-shadow(0 20px 25px rgba(0,0,0,0.15));
 }
 
+/* TEXT */
+
 h1{
+  font-size:34px;
   margin:10px 0 5px;
-  font-size:32px;
 }
 
 h2{
   font-weight:400;
-  color:#64748b;
+  color:#475569;
   min-height:28px;
 }
 
 .subtitle{
-  color:#94a3b8;
+  color:#64748b;
   margin-top:10px;
 }
+
+/* PROGRESS */
 
 .progress{
   width:260px;
@@ -52,40 +78,39 @@ h2{
 .bar{
   height:100%;
   width:75%;
-  background:#3b82f6;
+  background:#22c55e;
 }
 
-.progress-text{
-  font-size:14px;
-  color:#64748b;
-}
+/* CERTIFICATE */
 
 .certificates{
-  margin-top:60px;
+  margin-top:70px;
 }
 
 .certificates h3{
   text-align:center;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 
 .cert-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  gap:25px;
 }
 
 .cert-grid img{
   width:100%;
-  border-radius:12px;
+  border-radius:14px;
   cursor:pointer;
   transition:.3s;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 .cert-grid img:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px);
 }
+
+/* LIGHTBOX */
 
 #lightbox{
   position:fixed;
