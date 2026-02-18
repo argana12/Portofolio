@@ -1,59 +1,52 @@
-// AUTO DARK MODE (SYSTEM)
-if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-  document.body.classList.add("dark");
-}
-
-// TOGGLE THEME
-document.getElementById("themeToggle").onclick = () =>{
-  document.body.classList.toggle("dark");
-};
-
-// LOADING BAR
-gsap.to(".progress-bar",{
-  width:"100%",
-  duration:2,
-  onComplete:()=>{
-    gsap.to("#loader",{opacity:0,display:"none"});
-  }
-});
-
 // GSAP INTRO
-gsap.from(".title",{y:100,opacity:0,duration:1});
-gsap.from(".typing",{opacity:0,delay:1});
-gsap.from("form",{opacity:0,delay:1.5});
-gsap.from(".socials",{opacity:0,delay:2});
+gsap.from(".profile",{scale:0,opacity:0,duration:1});
+gsap.from(".title",{y:50,opacity:0});
+gsap.from(".role",{opacity:0});
+gsap.from(".status",{opacity:0});
+gsap.from(".certificates",{opacity:0,duration:1});
 
-// TYPING EFFECT
-const text = "We are crafting something powerful for you...";
-let i = 0;
+// TYPING ROLES
+const roles = [
+  "CYBER SECURITY",
+  "CLOUD ENGINEER",
+  "FULL STACK DEVELOPER",
+  "DESKTOP APP DEVELOPER"
+];
 
-function typing(){
-  if(i < text.length){
-    document.querySelector(".typing").textContent += text.charAt(i);
-    i++;
-    setTimeout(typing,40);
+let i=0,j=0,current="",isDeleting=false;
+
+function type(){
+  current = roles[i];
+
+  if(!isDeleting){
+    document.querySelector(".typing").textContent=current.substring(0,j++);
+    if(j>current.length){isDeleting=true;setTimeout(type,1000);return;}
   }
+  else{
+    document.querySelector(".typing").textContent=current.substring(0,j--);
+    if(j==0){isDeleting=false;i=(i+1)%roles.length;}
+  }
+
+  setTimeout(type,70);
 }
-typing();
+type();
 
-// EMAIL → LOCAL STORAGE
-document.getElementById("emailForm").addEventListener("submit",e=>{
-  e.preventDefault();
+// LIGHTBOX
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = lightbox.querySelector("img");
 
-  const email = e.target[0].value;
-
-  let data = JSON.parse(localStorage.getItem("emails")) || [];
-  data.push(email);
-
-  localStorage.setItem("emails", JSON.stringify(data));
-
-  document.getElementById("msg").textContent = "Email saved ✔";
-  e.target.reset();
+document.querySelectorAll(".cert-grid img").forEach(img=>{
+  img.onclick=()=>{
+    lightbox.style.display="flex";
+    lightboxImg.src=img.src;
+  };
 });
 
-// THREE JS BACKGROUND
+lightbox.onclick=()=>lightbox.style.display="none";
+
+// THREE JS
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight,0.1,1000);
+const camera = new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
 
 const renderer = new THREE.WebGLRenderer({
   canvas:document.getElementById("bg"),
@@ -62,28 +55,27 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(innerWidth,innerHeight);
 
-const geometry = new THREE.TorusKnotGeometry(10,3,100,16);
-const material = new THREE.MeshBasicMaterial({
-  color:0x6a5acd,
+const geo = new THREE.TorusKnotGeometry(10,3,100,16);
+const mat = new THREE.MeshBasicMaterial({
+  color:0x00ff9c,
   wireframe:true
 });
 
-const mesh = new THREE.Mesh(geometry,material);
+const mesh = new THREE.Mesh(geo,mat);
 scene.add(mesh);
 
-camera.position.z = 30;
+camera.position.z=25;
 
 function animate(){
   requestAnimationFrame(animate);
-  mesh.rotation.x += 0.01;
-  mesh.rotation.y += 0.01;
+  mesh.rotation.x+=0.003;
+  mesh.rotation.y+=0.005;
   renderer.render(scene,camera);
 }
 animate();
 
-// RESPONSIVE FIX
 window.addEventListener("resize",()=>{
   renderer.setSize(innerWidth,innerHeight);
-  camera.aspect = innerWidth/innerHeight;
+  camera.aspect=innerWidth/innerHeight;
   camera.updateProjectionMatrix();
 });
