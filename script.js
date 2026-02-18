@@ -1,16 +1,17 @@
-// GSAP INTRO
-gsap.from(".profile",{scale:0,opacity:0,duration:1});
-gsap.from(".title",{y:50,opacity:0});
-gsap.from(".role",{opacity:0});
-gsap.from(".status",{opacity:0});
-gsap.from(".certificates",{opacity:0,duration:1});
+// GSAP ANIMATION
+gsap.from(".profile",{y:-40,opacity:0,duration:1});
+gsap.from("h1",{opacity:0,duration:1});
+gsap.from("h2",{opacity:0,delay:.3});
+gsap.from(".subtitle",{opacity:0,delay:.5});
+gsap.from(".progress",{opacity:0,delay:.7});
+gsap.from(".certificates",{opacity:0,delay:1});
 
-// TYPING ROLES
+// TYPING TEXT
 const roles = [
-  "CYBER SECURITY",
-  "CLOUD ENGINEER",
-  "FULL STACK DEVELOPER",
-  "DESKTOP APP DEVELOPER"
+  "Cyber Security Enthusiast",
+  "Cloud Computing Engineer",
+  "Desktop App Developer",
+  "Full Stack Web Developer"
 ];
 
 let i=0,j=0,current="",isDeleting=false;
@@ -21,8 +22,7 @@ function type(){
   if(!isDeleting){
     document.querySelector(".typing").textContent=current.substring(0,j++);
     if(j>current.length){isDeleting=true;setTimeout(type,1000);return;}
-  }
-  else{
+  }else{
     document.querySelector(".typing").textContent=current.substring(0,j--);
     if(j==0){isDeleting=false;i=(i+1)%roles.length;}
   }
@@ -43,39 +43,3 @@ document.querySelectorAll(".cert-grid img").forEach(img=>{
 });
 
 lightbox.onclick=()=>lightbox.style.display="none";
-
-// THREE JS
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
-
-const renderer = new THREE.WebGLRenderer({
-  canvas:document.getElementById("bg"),
-  alpha:true
-});
-
-renderer.setSize(innerWidth,innerHeight);
-
-const geo = new THREE.TorusKnotGeometry(10,3,100,16);
-const mat = new THREE.MeshBasicMaterial({
-  color:0x00ff9c,
-  wireframe:true
-});
-
-const mesh = new THREE.Mesh(geo,mat);
-scene.add(mesh);
-
-camera.position.z=25;
-
-function animate(){
-  requestAnimationFrame(animate);
-  mesh.rotation.x+=0.003;
-  mesh.rotation.y+=0.005;
-  renderer.render(scene,camera);
-}
-animate();
-
-window.addEventListener("resize",()=>{
-  renderer.setSize(innerWidth,innerHeight);
-  camera.aspect=innerWidth/innerHeight;
-  camera.updateProjectionMatrix();
-});
