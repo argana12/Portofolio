@@ -1,5 +1,5 @@
-// GSAP ANIMATION
-gsap.from(".profile",{y:-40,opacity:0,duration:1});
+// GSAP INTRO
+gsap.from(".profile",{y:80,opacity:0,duration:1});
 gsap.from("h1",{opacity:0,duration:1});
 gsap.from("h2",{opacity:0,delay:.3});
 gsap.from(".subtitle",{opacity:0,delay:.5});
