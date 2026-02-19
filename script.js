@@ -1,37 +1,23 @@
-// GSAP INTRO
-gsap.from(".profile",{y:80,opacity:0,duration:1});
-gsap.from("h1",{opacity:0,duration:1});
-gsap.from("h2",{opacity:0,delay:.3});
-gsap.from(".subtitle",{opacity:0,delay:.5});
-gsap.from(".progress",{opacity:0,delay:.7});
-gsap.from(".certificates",{opacity:0,delay:1});
+// HERO ANIMATION
 
-// TYPING TEXT
-const roles = [
-  "Cyber Security Enthusiast",
-  "Cloud Computing Engineer",
-  "Desktop App Developer",
-  "Full Stack Web Developer"
-];
+gsap.from(".glow",{opacity:0,y:-40,duration:1});
+gsap.from(".desc",{opacity:0,y:20,delay:.3});
+gsap.from(".profile",{opacity:0,scale:.8,delay:.6});
+gsap.from(".progress",{opacity:0,delay:.9});
+gsap.from(".certificates",{opacity:0,y:50,delay:1.2});
 
-let i=0,j=0,current="",isDeleting=false;
+// FLOATING PROFILE
 
-function type(){
-  current = roles[i];
-
-  if(!isDeleting){
-    document.querySelector(".typing").textContent=current.substring(0,j++);
-    if(j>current.length){isDeleting=true;setTimeout(type,1000);return;}
-  }else{
-    document.querySelector(".typing").textContent=current.substring(0,j--);
-    if(j==0){isDeleting=false;i=(i+1)%roles.length;}
-  }
-
-  setTimeout(type,70);
-}
-type();
+gsap.to(".profile",{
+  y:15,
+  repeat:-1,
+  yoyo:true,
+  duration:3,
+  ease:"power1.inOut"
+});
 
 // LIGHTBOX
+
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = lightbox.querySelector("img");
 
