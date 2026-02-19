@@ -17,6 +17,7 @@ body{
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
+  text-align:center;
 }
 
 /* GRID BG */
@@ -37,7 +38,6 @@ body{
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
   padding:0 20px;
   position:relative;
 }
