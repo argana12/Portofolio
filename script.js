@@ -1,12 +1,10 @@
 gsap.registerPlugin(ScrollTrigger)
 
-// HERO
 gsap.from(".glow",{opacity:0,y:-40,duration:1})
 gsap.from(".progress-custom",{opacity:0,delay:.3})
 gsap.from(".progress-text",{opacity:0,delay:.5})
 gsap.from(".arrow-down",{opacity:0,delay:.7})
 
-// PROFILE
 gsap.from(".profile-wrapper",{
   scrollTrigger:"#profile-section",
   scale:.8,
@@ -29,7 +27,6 @@ gsap.from(".desc",{
   delay:.2
 })
 
-// CERTIFICATE
 gsap.from(".cert-card",{
   scrollTrigger:".cert-grid",
   y:60,
@@ -37,7 +34,6 @@ gsap.from(".cert-card",{
   stagger:.2
 })
 
-// LIGHTBOX
 const lightbox = document.getElementById("lightbox")
 const lightboxImg = lightbox.querySelector("img")
 
