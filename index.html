@@ -13,80 +13,82 @@
 
   <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <!-- ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-  <!-- Grid Background (custom) -->
+  <!-- Grid Background -->
   <div class="bg-grid"></div>
 
-  <div class="container py-5">
-
-    <!-- Hero Section -->
-    <section class="hero text-center">
+  <!-- SECTION 1: FULL SCREEN - COMING SOON & PROGRESS -->
+  <section class="section-hero d-flex align-items-center justify-content-center">
+    <div class="text-center">
       <h1 class="glow display-1 fw-bold">COMING SOON</h1>
-
-      <p class="desc lead mx-auto">
-        I’m building my next‑generation portfolio.<br>
-        Previously worked in:
-      </p>
-
-      <!-- Skill badges -->
-      <div class="skill-badges d-flex flex-wrap justify-content-center gap-2 mt-3">
-        <span class="badge-skills"><i class="bi bi-shield-lock me-1"></i>Cyber Security</span>
-        <span class="badge-skills"><i class="bi bi-cloud me-1"></i>Cloud Computing</span>
-        <span class="badge-skills"><i class="bi bi-code-slash me-1"></i>Fullstack Web</span>
-        <span class="badge-skills"><i class="bi bi-pc-display me-1"></i>Desktop Apps</span>
-        <span class="badge-skills"><i class="bi bi-phone me-1"></i>Mobile Dev</span>
-      </div>
-
-      <!-- Profile photo (updated style) -->
-      <div class="profile-wrapper mx-auto my-5">
-        <img src="img/profile-full.png" alt="Ghozy Argana" class="profile-img">
-      </div>
-
-      <!-- Progress bar -->
-      <div class="progress mx-auto" style="max-width: 280px;">
+      <div class="progress mx-auto my-4" style="max-width: 300px;">
         <div class="bar" style="width: 75%;"></div>
       </div>
-      <span class="progress-text d-block mt-2">Portfolio 75% in progress</span>
-    </section>
+      <span class="progress-text">Portfolio 75% in progress</span>
+    </div>
+  </section>
 
-    <!-- Certificates / Achievements -->
-    <section class="certificates mt-5 pt-5">
-      <h3 class="text-center mb-4 fw-light">Achievements</h3>
-
-      <div class="row g-4">
-        <!-- Cyber Juara 3 - dibuat potrait -->
-        <div class="col-md-4 col-6">
-          <div class="cert-card">
-            <div class="cert-img portrait">
-              <img src="img/cert-cyber-juara3.jpg" alt="Juara 3 Cyber" class="img-fluid">
-            </div>
-          </div>
+  <!-- SECTION 2: PROFILE & ABOUT -->
+  <section class="section-profile py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 text-center text-lg-start">
+          <!-- Foto profil persegi tanpa bulat -->
+          <img src="img/profile-full.png" alt="Ghozy Argana" class="profile-img img-fluid">
         </div>
-        <!-- Cloud cert -->
-        <div class="col-md-4 col-6">
-          <div class="cert-card">
-            <div class="cert-img">
-              <img src="img/cert-cloud.jpg" alt="Cloud Certification" class="img-fluid">
-            </div>
-          </div>
-        </div>
-        <!-- Cyber peserta -->
-        <div class="col-md-4 col-6">
-          <div class="cert-card">
-            <div class="cert-img">
-              <img src="img/cert-cyber-peserta.jpg" alt="Cyber Participant" class="img-fluid">
-            </div>
+        <div class="col-lg-7 mt-4 mt-lg-0">
+          <p class="desc lead">
+            I’m building my next‑generation portfolio.<br>
+            Previously worked in:
+          </p>
+          <div class="skill-badges d-flex flex-wrap gap-2 mt-3">
+            <span class="badge-skills"><i class="bi bi-shield-lock me-1"></i>Cyber Security</span>
+            <span class="badge-skills"><i class="bi bi-cloud me-1"></i>Cloud Computing</span>
+            <span class="badge-skills"><i class="bi bi-code-slash me-1"></i>Fullstack Web</span>
+            <span class="badge-skills"><i class="bi bi-pc-display me-1"></i>Desktop Apps</span>
+            <span class="badge-skills"><i class="bi bi-phone me-1"></i>Mobile Dev</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </div> <!-- .container -->
+  <!-- SECTION 3: ACHIEVEMENTS (VERTICAL STACK) -->
+  <section class="section-certificates py-5">
+    <div class="container">
+      <h3 class="text-center mb-5 fw-light">Achievements</h3>
+      <div class="cert-vertical">
+        <!-- Cyber Juara 3 -->
+        <div class="cert-card mb-4">
+          <div class="cert-img landscape">
+            <img src="img/cert-cyber-juara3.jpg" alt="Juara 3 Cyber" class="img-fluid">
+          </div>
+        </div>
+        <!-- Cloud Certification -->
+        <div class="cert-card mb-4">
+          <div class="cert-img landscape">
+            <img src="img/cert-cloud.jpg" alt="Cloud Certification" class="img-fluid">
+          </div>
+        </div>
+        <!-- Cyber Peserta -->
+        <div class="cert-card mb-4">
+          <div class="cert-img landscape">
+            <img src="img/cert-cyber-peserta.jpg" alt="Cyber Participant" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Lightbox (tetap sama) -->
-  <div id="lightbox"><img src="" alt=""></div>
+  <!-- LIGHTBOX dengan tombol close -->
+  <div id="lightbox">
+    <span class="close-lightbox"><i class="bi bi-x-lg"></i></span>
+    <img src="" alt="">
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
